@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Explora tu Futuro Académico! - App de Especialidades Técnicas</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos personalizados para la fuente Inter y el esquema de colores */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Puedes definir colores personalizados de Tailwind aquí si lo necesitas,
+           o simplemente usar los predeterminados de Tailwind con los tonos solicitados */
+        .bg-custom-red { background-color: #EF4444; /* Rojo 500 de Tailwind */ }
+        .text-custom-red { color: #EF4444; }
+        .bg-custom-dark-gray { background-color: #1F2937; /* Gris 800 de Tailwind */ }
+        .text-custom-dark-gray { color: #1F2937; }
+        .border-custom-red { border-color: #EF4444; }
+
+        /* Estilo para el efecto de sombra y borde de las tarjetas de características */
+        .feature-card:hover {
+            transform: translateY(-5px); /* Pequeño levantamiento */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Sombra más pronunciada */
+            border-color: #DC2626; /* Rojo 600 de Tailwind para el borde */
+        }
+
+        /* Estilo para el efecto de los botones */
+        .btn-primary:hover {
+            transform: scale(1.05); /* Ligeramente más grande */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+        }
+
+        /* Estilos del Pop-up */
+        .popup-container {
+            visibility: hidden;
+            opacity: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+            z-index: 1000;
+        }
+
+        .popup-container.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .popup-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .popup-box {
+            background-color: #1F2937; /* Gris 800 de tu esquema de colores */
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            max-width: 450px;
+            width: 90%;
+            transform: translateY(-20px) scale(0.95);
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+
+        .popup-container.show .popup-box {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 antialiased">
+
+        <header class="bg-custom-dark-gray text-white py-6 shadow-md">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <div class="text-3xl font-bold text-red-500">
+                🚀 EduFuturo App
+            </div>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="#hero" class="hover:text-red-400 transition-colors duration-300">Inicio</a></li>
+                    <li><a href="#features" class="hover:text-red-400 transition-colors duration-300">Características</a></li>
+                    <li><a href="#about-cta" class="hover:text-red-400 transition-colors duration-300">Sobre la App</a></li>
+                    <li><a href="#testimonials" class="hover:text-red-400 transition-colors duration-300">Testimonios</a></li>
+                    <li><a href="#contact" class="hover:text-red-400 transition-colors duration-300">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+        <section id="hero" class="bg-gradient-to-r from-gray-900 to-gray-700 text-white py-20 md:py-32">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-4">
+            <div class="md:w-1/2 text-center md:text-left mb-12 md:mb-0">
+                <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6 text-red-400">
+                    Descubre Tu Camino Académico con EduFuturo
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 opacity-90">
+                    La App que conecta a estudiantes de secundaria con las especialidades técnicas que transformarán su futuro.
+                </p>
+                <a href="#contact" class="btn-primary inline-block bg-red-600 text-white font-bold py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 hover:bg-red-700">
+                    ¡Explorar Especialidades Ahora!
+                </a>
+            </div>
+            <div class="md:w-1/2 flex flex-wrap justify-center gap-4">
+                                <img src="https://placehold.co/200x300/374151/FCA5A5?text=Mockup+1" alt="Mockup de la aplicación EduFuturo 1" class="rounded-lg shadow-2xl w-full sm:w-1/2 md:w-1/3 lg:w-1/4 h-auto">
+                <img src="https://placehold.co/200x300/374151/FCA5A5?text=Mockup+2" alt="Mockup de la aplicación EduFuturo 2" class="rounded-lg shadow-2xl w-full sm:w-1/2 md:w-1/3 lg:w-1/4 h-auto">
+                <img src="https://placehold.co/200x300/374151/FCA5A5?text=Mockup+3" alt="Mockup de la aplicación EduFuturo 3" class="rounded-lg shadow-2xl w-full sm:w-1/2 md:w-1/3 lg:w-1/4 h-auto">
+                <img src="https://placehold.co/200x300/374151/FCA5A5?text=Mockup+4" alt="Mockup de la aplicación EduFuturo 4" class="rounded-lg shadow-2xl w-full sm:w-1/2 md:w-1/3 lg:w-1/4 h-auto">
+                <img src="https://placehold.co/200x300/374151/FCA5A5?text=Mockup+5" alt="Mockup de la aplicación EduFuturo 5" class="rounded-lg shadow-2xl w-full sm:w-1/2 md:w-1/3 lg:w-1/4 h-auto">
+                <img src="https://placehold.co/200x300/374151/FCA5A5?text=Mockup+6" alt="Mockup de la aplicación EduFuturo 6" class="rounded-lg shadow-2xl w-full sm:w-1/2 md:w-1/3 lg:w-1/4 h-auto">
+            </div>
+        </div>
+    </section>
+
+        <section id="features" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-12 text-custom-dark-gray">¿Qué te ofrece EduFuturo?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                <div class="feature-card bg-white p-8 rounded-xl shadow-md transition-all duration-300 ease-in-out border-2 border-transparent">
+                    <div class="text-5xl mb-4">📚</div>
+                    <h3 class="text-2xl font-semibold mb-3 text-custom-dark-gray">Información Detallada</h3>
+                    <p class="text-gray-600">Accede a descripciones completas, planes de estudio y perfiles de egreso de cada especialidad.</p>
+                </div>
+                                <div class="feature-card bg-white p-8 rounded-xl shadow-md transition-all duration-300 ease-in-out border-2 border-transparent">
+                    <div class="text-5xl mb-4">🔍</div>
+                    <h3 class="text-2xl font-semibold mb-3 text-custom-dark-gray">Exploración Interactiva</h3>
+                    <p class="text-gray-600">Navega por las opciones con una interfaz amigable y descubre tus intereses.</p>
+                </div>
+                                <div class="feature-card bg-white p-8 rounded-xl shadow-md transition-all duration-300 ease-in-out border-2 border-transparent">
+                    <div class="text-5xl mb-4">💬</div>
+                    <h3 class="text-2xl font-semibold mb-3 text-custom-dark-gray">Preguntas Frecuentes</h3>
+                    <p class="text-gray-600">Encuentra respuestas a tus dudas más comunes sobre las carreras técnicas.</p>
+                </div>
+                                <div class="feature-card bg-white p-8 rounded-xl shadow-md transition-all duration-300 ease-in-out border-2 border-transparent">
+                    <div class="text-5xl mb-4">🎓</div>
+                    <h3 class="text-2xl font-semibold mb-3 text-custom-dark-gray">Preparación Futura</h3>
+                    <p class="text-gray-600">Conoce las habilidades y conocimientos que adquirirás en cada área.</p>
+                </div>
+                                <div class="feature-card bg-white p-8 rounded-xl shadow-md transition-all duration-300 ease-in-out border-2 border-transparent">
+                    <div class="text-5xl mb-4">📱</div>
+                    <h3 class="text-2xl font-semibold mb-3 text-custom-dark-gray">Acceso Móvil</h3>
+                    <p class="text-gray-600">Toda la información disponible desde tu smartphone, en cualquier momento y lugar.</p>
+                </div>
+                                <div class="feature-card bg-white p-8 rounded-xl shadow-md transition-all duration-300 ease-in-out border-2 border-transparent">
+                    <div class="text-5xl mb-4">🤝</div>
+                    <h3 class="text-2xl font-semibold mb-3 text-custom-dark-gray">Guía para Padres</h3>
+                    <p class="text-gray-600">Sección especial para padres con información relevante y contactos para resolver dudas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <section id="about-cta" class="bg-custom-dark-gray text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-8 text-red-400">Transforma Tu Mañana, Hoy.</h2>
+            <p class="text-xl mb-10 max-w-3xl mx-auto opacity-90">
+                EduFuturo es más que una aplicación; es tu guía personal para tomar una de las decisiones más importantes de tu vida académica. Diseñada para estudiantes de décimo grado, te ofrece una visión clara y completa de cada especialidad técnica disponible en nuestro colegio. ¡No dejes tu futuro al azar!
+            </p>
+            <a href="#contact" class="btn-primary inline-block bg-red-600 text-white font-bold py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 hover:bg-red-700">
+                Quiero Saber Más
+            </a>
+        </div>
+    </section>
+
+        <section id="testimonials" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-12 text-custom-dark-gray">Lo que dicen nuestros alumnos y padres</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <p class="text-gray-700 italic mb-4">"EduFuturo me ayudó a entender realmente qué ofrece cada especialidad. Antes estaba muy confundido, ¡ahora tengo claro mi camino!"</p>
+                    <p class="font-semibold text-custom-dark-gray">- Sofía G., Estudiante</p>
+                </div>
+                                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <p class="text-gray-700 italic mb-4">"Como padre, esta app es invaluable. Pude revisar junto a mi hijo todas las opciones y apoyarlo mejor en su elección. ¡Felicidades por esta iniciativa!"</p>
+                    <p class="font-semibold text-custom-dark-gray">- Sr. Rodríguez, Padre de Familia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <section id="contact" class="bg-gray-800 text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-8 text-red-400">¿Interesado en Conocer Más?</h2>
+            <p class="text-xl mb-10 max-w-2xl mx-auto opacity-90">
+                Déjanos tus datos y nos pondremos en contacto contigo para resolver todas tus preguntas sobre las especialidades técnicas.
+            </p>
+            <form class="max-w-xl mx-auto bg-gray-700 p-8 rounded-xl shadow-lg">
+                <div class="mb-6">
+                    <label for="name" class="block text-left text-gray-200 text-lg font-medium mb-2">Nombre Completo:</label>
+                    <input type="text" id="name" name="name" class="w-full px-5 py-3 rounded-lg bg-gray-600 border border-gray-500 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="Tu Nombre" required>
+                </div>
+                <div class="mb-6">
+                    <label for="email" class="block text-left text-gray-200 text-lg font-medium mb-2">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" class="w-full px-5 py-3 rounded-lg bg-gray-600 border border-gray-500 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="tu.email@ejemplo.com" required>
+                </div>
+                <div class="mb-6">
+                    <label for="role" class="block text-left text-gray-200 text-lg font-medium mb-2">Eres:</label>
+                    <select id="role" name="role" class="w-full px-5 py-3 rounded-lg bg-gray-600 border border-gray-500 text-white focus:outline-none focus:ring-2 focus:ring-red-500">
+                        <option value="">Selecciona tu rol</option>
+                        <option value="student">Estudiante</option>
+                        <option value="parent">Padre/Madre</option>
+                    </select>
+                </div>
+                <div class="mb-8">
+                    <label for="message" class="block text-left text-gray-200 text-lg font-medium mb-2">Mensaje (Opcional):</label>
+                    <textarea id="message" name="message" rows="4" class="w-full px-5 py-3 rounded-lg bg-gray-600 border border-gray-500 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="Déjanos saber tus dudas o intereses..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary w-full bg-red-600 text-white font-bold py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 hover:bg-red-700">
+                    Enviar Consulta
+                </button>
+            </form>
+        </div>
+    </section>
+
+        <footer class="bg-custom-dark-gray text-gray-400 py-8">
+        <div class="container mx-auto px-4 text-center text-sm">
+            <p>&copy; 2025 EduFuturo App. Todos los derechos reservados.</p>
+            <p class="mt-2">Diseñado con 💜 para el futuro de nuestros estudiantes.</p>
+        </div>
+    </footer>
+    
+        <div id="popup-container" class="popup-container">
+        <div class="popup-overlay"></div>
+        <div class="popup-box">
+            <button onclick="closePopup()" class="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors duration-200 text-3xl font-bold">&times;</button>
+            <h3 class="text-3xl md:text-4xl font-bold text-red-400 mb-4">¡Sesión Informativa!</h3>
+            <p class="text-gray-300 mb-6 text-lg">
+                ¿Aún tienes dudas? Únete a nuestra sesión en vivo y descubre todo sobre las especialidades técnicas.
+            </p>
+            <a href="URL_DE_TU_SESIÓN" target="_blank" class="bg-red-600 text-white font-bold py-4 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 hover:bg-red-700">
+                Entrar a la Sesión 🚀
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        function openPopup() {
+            const popup = document.getElementById('popup-container');
+            popup.classList.add('show');
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('popup-container');
+            popup.classList.remove('show');
+        }
+
+        // Opcional: Abre el pop-up después de un tiempo o al cargar la página
+        window.onload = () => {
+            setTimeout(openPopup, 3000); // Abre el pop-up 3 segundos después de cargar la página
+        };
+    </script>
+
+</body>
+</html>
